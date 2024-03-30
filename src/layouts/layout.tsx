@@ -6,15 +6,16 @@ import Footer from "@/components/Footer.tsx";
 type Props = {
     children: React.ReactNode;
     showHero?: boolean;
+    showForm?: boolean;
 };
 
-const Layout = ({children, showHero}: Props) => {
+const Layout = ({children, showHero,showForm}: Props) => {
     return (
         <div className={"flex flex-col min-h-screen"}>
             <Header/>
             {showHero && <Hero/>}
             {
-                showHero ?
+                showHero || showForm ?
                     (
                         <div
                             style={{

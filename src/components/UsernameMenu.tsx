@@ -21,7 +21,15 @@ const UsernameMenu = () => {
                     {user?.name}
                 </span>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className={'w-52'}>
+            <DropdownMenuContent className={'w-60'}>
+                <DropdownMenuItem>
+                    <Link
+                        to="/manage-restaurant"
+                        className="font-bold text-lg px-3 hover:text-orange-500"
+                    >
+                        Manage Restaurant
+                    </Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem >
                     <Link to={'/user-profile'} className={'font-bold text-xl px-3 hover:text-orange-500'}>
                         User Profile

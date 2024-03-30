@@ -5,4 +5,22 @@ export type User= {
     AddressLine1: string;
     City: string;
     Country: string;
+};
+export type MenuItem = {
+    _id: string;
+    Name: string;
+    Price: number;
+};
+export type Restaurant = {
+    _id: string;
+    User: string;
+    RestaurantName: string;
+    City: string;
+    Country: string;
+    DeliveryPrice: number;
+    DeliveryTime: number;
+    Cuisines: string[];
+    MenuItems: MenuItem[];
+    ImageUrl: string;
+    LastUpdated: string;
 }
