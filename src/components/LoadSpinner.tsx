@@ -1,14 +1,15 @@
-import {RotatingLines} from "react-loader-spinner";
+import { RotatingLines } from "react-loader-spinner";
 
 const LoadSpinner = () => {
     return (
-        <div className={'flex justify-center bg-gray-600 bg-opacity-40'} style={{width:"100vw", height: "100vh", position: "fixed"}}>
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-600 bg-opacity-40">
             <RotatingLines
-                width="80"
-                strokeColor={'tomato'}
+                width={'80'}
+                strokeColor="tomato"
                 ariaLabel="loading"
             />
         </div>
-    )
-}
-export default LoadSpinner
+    );
+};
+
+export default LoadSpinner;

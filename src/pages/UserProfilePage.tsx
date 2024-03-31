@@ -11,7 +11,11 @@ const UserProfilePage = () => {
     if (!currentUser) {
         return <div>Failed to fetch user</div>;
     }
-    return <UserProfileForm onSave={updateUser} isLoading={isUpdateLoading} currentUser={currentUser}/>
+    return (
+        <>
+            <UserProfileForm onSave={updateUser} isLoading={isUpdateLoading} currentUser={currentUser}/>
+        </>
+    )
 
 }
 export default UserProfilePage
