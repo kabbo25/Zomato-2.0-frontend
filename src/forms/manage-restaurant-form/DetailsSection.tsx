@@ -1,94 +1,69 @@
-import {
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { useFormContext } from "react-hook-form";
+import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form.tsx";
+
+import {Input} from "@/components/ui/input.tsx";
+import {useFormContext} from "react-hook-form";
+import {faBangladeshiTakaSign} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const DetailsSection = () => {
-  const { control } = useFormContext();
-  return (
-    <div className="space-y-2">
-      <div>
-        <h2 className="text-2xl font-bold">Details</h2>
-        <FormDescription>
-          Enter the details about your restaurant
-        </FormDescription>
-      </div>
-      <FormField
-        control={control}
-        name="restaurantName"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Name</FormLabel>
-            <FormControl>
-              <Input {...field} className="bg-white" placeholder={'Kabbo Ghosh'}/>
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-      <div className="flex gap-4">
-        <FormField
-          control={control}
-          name="city"
-          render={({ field }) => (
-            <FormItem className="flex-1">
-              <FormLabel>City</FormLabel>
-              <FormControl>
-                <Input {...field} className="bg-white" placeholder={'Jashore'} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={control}
-          name="country"
-          render={({ field }) => (
-            <FormItem className="flex-1">
-              <FormLabel>Country</FormLabel>
-              <FormControl>
-                <Input {...field} className="bg-white" placeholder={'Bangladesh'} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </div>
+    const {control} = useFormContext();
+    return (
+        <div className={'space-y-2'}>
+            <div>
+                <h1 className={'text-2xl font-bold'}>Details</h1>
+            </div>
+            <FormDescription>
+                Enter the details about your restaurant
+            </FormDescription>
+            <FormField control={control} name={"RestaurantName"} render={({field}) => (
+                <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                        <Input placeholder={'kabbo ghosh'} {...field}/>
+                    </FormControl>
+                    <FormMessage/>
+                </FormItem>
+            )}/>
+            <div className={'flex gap-4'}>
+            <FormField control={control} name={"City"} render={({field}) => (
+                <FormItem className={'flex-1'}>
+                    <FormLabel>City</FormLabel>
+                    <FormControl>
+                        <Input placeholder={'Jashore'} {...field}/>
+                    </FormControl>
+                    <FormMessage/>
+                </FormItem>
 
-      <FormField
-        control={control}
-        name="deliveryPrice"
-        render={({ field }) => (
-          <FormItem className="max-w-[25%]">
-            <FormLabel>Delivery price (£)</FormLabel>
-            <FormControl>
-              <Input {...field} className="bg-white" placeholder="1.50" />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-      <FormField
-        control={control}
-        name="DeliveryTime"
-        render={({ field }) => (
-          <FormItem className="max-w-[25%]">
-            <FormLabel>Estimated Delivery Time (minutes)</FormLabel>
-            <FormControl>
-              <Input {...field} className="bg-white" placeholder="30" />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-    </div>
-  );
-};
-
-export default DetailsSection;
+            )}/>
+            <FormField control={control} name={"Country"} render={({field}) => (
+                <FormItem className={'flex-1'}>
+                    <FormLabel>Country</FormLabel>
+                    <FormControl>
+                        <Input placeholder={'Bangladesh'} {...field}/>
+                    </FormControl>
+                    <FormMessage/>
+                </FormItem>
+            )}/>
+            </div>
+            <FormField control={control} name={"DeliveryPrice"} render={({field}) => (
+                <FormItem className={'md:max-w-[25%]'}>
+                    <FormLabel>Delivery price (<FontAwesomeIcon icon={faBangladeshiTakaSign} />) </FormLabel>
+                    <FormControl>
+                        <Input placeholder={'1.50'} className={'bg-white'} {...field}/>
+                    </FormControl>
+                    <FormMessage/>
+                </FormItem>
+            )}/>
+            <FormField control={control} name={"Country"} render={({field}) => (
+                <FormItem className={'md:max-w-[25%]'}>
+                    <FormLabel>Estimated Delivery Time (minutes)</FormLabel>
+                    <FormControl>
+                        <Input placeholder={'25'} className={'bg-white'} {...field}/>
+                    </FormControl>
+                    <FormMessage/>
+                </FormItem>
+            )}/>
+        </div>
+    )
+}
+export default DetailsSection
