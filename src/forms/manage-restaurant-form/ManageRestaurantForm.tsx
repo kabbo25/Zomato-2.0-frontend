@@ -3,6 +3,8 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Form} from "@/components/ui/form.tsx";
 import DetailsSection from "@/forms/manage-restaurant-form/DetailsSection.tsx";
+import CuisinesSection from "@/forms/manage-restaurant-form/CuisinesSection.tsx";
+import {Separator} from "@/components/ui/separator.tsx";
 const formSchema=z.object({
    RestaurantName:  z.string({
        required_error: "Restaurant name is required"
@@ -22,7 +24,7 @@ const formSchema=z.object({
         invalid_type_error: "typed should be number",
     }),
     Cuisine: z.array(z.string()).nonempty({
-        message: "Cousine should be array"
+        message: "Cuisine should be array"
     }),
     MenuItems: z.array(z.object({
         Name: z.string().min(1,"Menu Name is required"),
@@ -55,6 +57,8 @@ const ManageRestaurantForm = ({onSave,isLoading}:Props) => {
             <form onSubmit={form.handleSubmit(onSubmit)}
                 className={'bg-gray-50 space-y-4 p-10 rounded-lg'}>
                 <DetailsSection/>
+                <Separator/>
+                <CuisinesSection/>
             </form>
         </Form>
 
