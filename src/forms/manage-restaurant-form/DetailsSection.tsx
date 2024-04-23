@@ -4,6 +4,7 @@ import {Input} from "@/components/ui/input.tsx";
 import {useFormContext} from "react-hook-form";
 import {faBangladeshiTakaSign} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {DevTool} from "@hookform/devtools";
 
 const DetailsSection = () => {
     const {control} = useFormContext();
@@ -63,6 +64,7 @@ const DetailsSection = () => {
                     <FormMessage/>
                 </FormItem>
             )}/>
+            <DevTool control={control}/>
         </div>
     )
 }
