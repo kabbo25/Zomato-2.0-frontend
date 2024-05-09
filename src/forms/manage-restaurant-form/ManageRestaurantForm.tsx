@@ -9,6 +9,8 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {useForm} from "react-hook-form";
 import {z} from "zod";
 import ImageSection from "@/forms/manage-restaurant-form/ImageSection.tsx";
+import {Restaurant} from "@/types.ts";
+import {useEffect} from "react";
 
 const formSchema = z
     .object({
@@ -49,17 +51,36 @@ type RestaurantFormData = z.infer<typeof formSchema>;
 type Props = {
     onSave: (restaurantFromData: FormData) => void;
     isLoading: boolean;
+    currentRestaurant?: Restaurant;
 };
-const ManageRestaurantForm = ({onSave, isLoading}: Props) => {
+const ManageRestaurantForm = ({onSave, isLoading, currentRestaurant}: Props) => {
     const form = useForm<RestaurantFormData>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             Cuisine: [],
-        },
+            MenuItems: [{Name: "", Price: 0}]
+        }
     });
-
+    useEffect(() => {
+        if(!currentRestaurant) {
+            return;
+        }
+        const deliveryPriceFormatted = parseInt(
+            (currentRestaurant.DeliveryPrice/100).toFixed(2)
+        );
+        const menuItemsFormatted= currentRestaurant.MenuItems.map((item)=>({
+                ...item,
+                Price: parseInt((item.Price/100).toFixed(2))
+            })
+        );
+        const updatedRestaurant= {
+            ...currentRestaurant,
+            DeliveryPrice: deliveryPriceFormatted,
+            MenuItems: menuItemsFormatted
+        };
+        form.reset(updatedRestaurant);
+    }, [form,currentRestaurant]);
     const onSubmit = (formDataJson: RestaurantFormData) => {
-        console.log(formDataJson);
         const formData = new FormData();
         formData.append("RestaurantName", formDataJson.RestaurantName);
         formData.append("City", formDataJson.City);
