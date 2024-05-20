@@ -19,7 +19,7 @@ export type Restaurant = {
     Country: string;
     DeliveryPrice: number;
     DeliveryTime: number;
-    Cuisines: string[];
+    Cuisine: string[];
     MenuItems: MenuItem[];
     ImageUrl: string;
     LastUpdated: string;
